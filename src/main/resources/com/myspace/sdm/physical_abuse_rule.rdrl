@@ -1,0 +1,12 @@
+package com.myspace.sdm;
+
+import java.lang.Number;
+
+rule "physical_abuse_rule"
+	dialect "mvel"
+	ruleflow-group "physical_abuse_rule"
+	when
+		physicalAbuse : PhysicalAbuse( injuryInconsistent == true , nonAccidentalInjury == true , suspiciousDeath == true )
+	then
+		physicalAbuse.setResult( "CPS-IR" );
+end
